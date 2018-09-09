@@ -1,0 +1,40 @@
+{
+  "name": "layout-dashboard",
+  "version": "1.0.0",
+  "description": "Dashboard for the Firefox Platform Layout team.",
+  "scripts": {
+    "start": "webpack-dev-server --hot --open",
+    "build": "webpack -p --progress --colors"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/svoisen/layout-dashboard.git"
+  },
+  "author": "Sean Voisen",
+  "license": "MIT",
+  "homepage": "https://github.com/svoisen/layout-dashboard#readme",
+  "dependencies": {
+    "c3": "^0.6.7",
+    "history": "^4.7.2",
+    "mobx": "^5.1.0",
+    "mobx-react": "^5.2.5",
+    "mobx-react-router": "^4.0.4",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-router-dom": "^4.3.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "css-loader": "^1.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "style-loader": "^0.23.0",
+    "webpack": "^4.17.2",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.7"
+  }
+}

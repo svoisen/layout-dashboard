@@ -1,0 +1,8 @@
+{
+  "bugzilla": {
+    "endpoint": "https://bugzilla.mozilla.org/rest/bug",
+    "layoutComponents": [
+      "Layout"
+    ]
+  }
+}
