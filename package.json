@@ -4,7 +4,8 @@
   "description": "Dashboard for the Firefox Platform Layout team.",
   "scripts": {
     "start": "webpack-dev-server --hot --open",
-    "build": "webpack -p --progress --colors"
+    "build": "webpack -p --progress --colors",
+    "deploy": "npm run build && node node_modules/gh-pages/bin/gh-pages.js -d dist"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "css-loader": "^1.0.0",
+    "gh-pages": "^1.2.0",
     "html-webpack-plugin": "^3.2.0",
     "style-loader": "^0.23.0",
     "webpack": "^4.17.2",
