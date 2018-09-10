@@ -1,0 +1,17 @@
+.buglist {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.buglist thead {
+  background-color: #b0b2e9;
+}
+
+.buglist thead td {
+  padding: 0.5rem;
+}
+
+.buglist tbody {
+  font-size: 0.875rem;
+}

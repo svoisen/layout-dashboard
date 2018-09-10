@@ -1,4 +1,6 @@
+import '../node_modules/c3/c3.css'
 import './index.css';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createBrowserHistory } from 'history';

@@ -4,18 +4,17 @@ const config = require('../config.json');
 
 const fetchBugs = ({ bugs, listType }) => {
   const url = new URL(config.bugzilla.endpoint);
-  const params = {
-    include_fields: ['id', 'summary', 'is_open', 'creation_time', 'last_change_time'].join(','),
-    component: config.bugzilla.layoutComponents.join(',')
-  };
+  url.searchParams.append('include_fields', ['id', 'summary', 'component', 'is_open', 'creation_time', 'last_change_time'].join(','));
+
+  config.bugzilla.layoutComponents.forEach(component => {
+    url.searchParams.append('component', component);
+  });
 
   if (listType === QUANTUM_FLOW) {
-    params.whiteboard = '[qf:p1:f64]';
+    url.searchParams.append('whiteboard', '[qf:p1:f64]');
   } else if (listType === WEBCOMPAT) {
-    params.whiteboard = '[webcompat:p1]';
+    url.searchParams.append('whiteboard', '[webcompat:p1]');
   }
-
-  Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
   window.fetch(url)
     .then(checkResponse)

@@ -2,6 +2,7 @@
   "bugzilla": {
     "endpoint": "https://bugzilla.mozilla.org/rest/bug",
     "layoutComponents": [
+      "CSS Parsing and Computation",
       "Layout"
     ]
   }
