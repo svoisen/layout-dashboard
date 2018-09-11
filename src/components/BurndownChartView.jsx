@@ -1,29 +1,22 @@
 import './BurndownChartView.css';
 import React from 'react';
+import PropTypes from 'prop-types';
+import { autorun } from 'mobx';
 import { observer } from 'mobx-react';
 import c3 from 'c3';
+import { generateBurndownChartData } from '../util/ChartUtil';
 
-const BurndownChartView = observer(class BurndownChartView extends React.Component {
+class BurndownChartView extends React.Component {
   componentDidMount() {
-    const chart = c3.generate({
-      bindto: '#chart',
-      data: {
-        x: 'x',
-        columns: [
-            ['x', '2013-01-01', '2013-01-02', '2013-01-03', '2013-01-04', '2013-01-05', '2013-01-06'],
-            ['data1', 30, 200, 100, 400, 150, 250],
-            ['data2', 130, 340, 200, 500, 250, 350]
-        ]
-      },
-      axis: {
-          x: {
-              type: 'timeseries',
-              tick: {
-                  format: '%Y-%m-%d'
-              }
-          }
-      }
-    });
+    this.props.bugs.observe(() => {
+      const oneYearAgo = new Date(new Date().setFullYear(new Date().getFullYear() - 1)) 
+      const { data, axis } = generateBurndownChartData({ bugs: this.props.bugs, minDate: oneYearAgo });
+      c3.generate({
+        bindto: '#chart',
+        data,
+        axis
+      });
+    }, true);
   }
 
   render() {
@@ -31,6 +24,10 @@ const BurndownChartView = observer(class BurndownChartView extends React.Compone
       <div id="chart" className="chart"></div>
     )
   }
-});
+}
 
-export default BurndownChartView;
+BurndownChartView.propTypes = {
+  bugs: PropTypes.array.isRequired
+}
+
+export default observer(BurndownChartView);

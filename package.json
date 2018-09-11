@@ -17,9 +17,11 @@
   "dependencies": {
     "c3": "^0.6.7",
     "history": "^4.7.2",
+    "luxon": "^1.3.3",
     "mobx": "^5.1.0",
     "mobx-react": "^5.2.5",
     "mobx-react-router": "^4.0.4",
+    "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-router-dom": "^4.3.1"

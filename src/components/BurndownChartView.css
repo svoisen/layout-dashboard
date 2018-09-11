@@ -1,3 +1,4 @@
 .chart {
   border-bottom: 1px solid black;
+  max-height: 50vh;
 }
