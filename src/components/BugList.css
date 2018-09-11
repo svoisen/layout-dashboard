@@ -3,6 +3,10 @@
   overflow-y: auto;
 }
 
+.buglist a, .buglist a:visited {
+  color: #4eb5e6;
+}
+
 .buglist table {
   border-collapse: collapse;
   width: 100%;

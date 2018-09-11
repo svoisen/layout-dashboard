@@ -39,6 +39,9 @@ const generateBurndownChartData = ({ bugs, minDate }) => {
       },
       types: {
         open: 'area'
+      },
+      colors: {
+        open: '#4eb5e6'
       }
     },
     axis: {

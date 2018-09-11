@@ -5,7 +5,7 @@ import { observer } from 'mobx-react';
 const renderBug = bug => {
   return (
     <tr key={ bug.id } className={ bug.is_open ? "openBug" : "closedBug" }>
-      <td className="bugId">{ bug.id }</td>
+      <td className="bugId"><a href={ `https://bugzilla.mozilla.org/show_bug.cgi?id=${bug.id}` }>{ bug.id }</a></td>
       <td className="bugComponent">{ bug.component }</td>
       <td className="bugSummary">{ bug.summary }</td>
       <td className="bugDate">{ bug.creation_time }</td>

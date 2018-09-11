@@ -9,8 +9,8 @@ import { generateBurndownChartData } from '../util/ChartUtil';
 class BurndownChartView extends React.Component {
   componentDidMount() {
     this.props.bugs.observe(() => {
-      const oneYearAgo = new Date(new Date().setFullYear(new Date().getFullYear() - 1)) 
-      const { data, axis } = generateBurndownChartData({ bugs: this.props.bugs, minDate: oneYearAgo });
+      const yearStart = new Date(`${new Date().getFullYear()}-01-01T00:00:00Z`);
+      const { data, axis } = generateBurndownChartData({ bugs: this.props.bugs, minDate: yearStart });
       c3.generate({
         bindto: '#chart',
         data,
