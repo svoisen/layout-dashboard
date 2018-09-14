@@ -14,7 +14,6 @@ const generateBurndownChartData = ({ bugs, minDate }) => {
     });
   });
 
-
   let openCount = 0;
   events = events
     .sort((a, b) => a.date > b.date)

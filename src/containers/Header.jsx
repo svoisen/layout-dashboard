@@ -9,11 +9,10 @@ const Header = observer(({ router }) => {
 
   return (
     <header className="header">
-      <h1>Firefox Platform Layout Dashboard</h1>
       <nav>
         <ul>
-          <li className={ unprefixedHash === QUANTUM_FLOW || !unprefixedHash ? 'selected' : undefined }><a href={ '#' + QUANTUM_FLOW }>QF Burndown</a></li>
-          <li className={ unprefixedHash === WEBCOMPAT ? 'selected' : undefined }><a href={ '#' + WEBCOMPAT }>Webcompat Burndown</a></li>
+          <li className={ unprefixedHash === QUANTUM_FLOW || !unprefixedHash ? 'selected' : undefined }><a href={ '#' + QUANTUM_FLOW }>Quantum Flow</a></li>
+          <li className={ unprefixedHash === WEBCOMPAT ? 'selected' : undefined }><a href={ '#' + WEBCOMPAT }>Webcompat</a></li>
         </ul>
       </nav>
     </header>

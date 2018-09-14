@@ -4,14 +4,23 @@ import Header from './Header';
 import BugList from '../components/BugList';
 import { observer } from 'mobx-react';
 import BurndownChartView from '../components/BurndownChartView';
+import FilterOptionsView from '../components/FilterOptionsView';
+import { setStartDateFromStr } from '../actions/FilterActions';
 
 const App = observer(({ store }) => {
+  const { bugs, filterOptions, router } = store;
+
   return (
     <div id="app" className="app">
-      <Header router={ store.router } />
+      <Header router={ router } />
       <div className="contents">
-        <BurndownChartView bugs={ store.bugs } />
-        <BugList bugs={ store.bugs } />
+        <FilterOptionsView
+          filterOptions={ filterOptions }
+          onStartDateChange={ dateStr => setStartDateFromStr({ filterOptions, dateStr }) } />
+        <BurndownChartView
+          bugs={ bugs }
+          filterOptions={ filterOptions } />
+        <BugList bugs={ bugs } />
       </div>
     </div>
   );

@@ -1,7 +1,6 @@
 import './BurndownChartView.css';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { autorun } from 'mobx';
 import { observer } from 'mobx-react';
 import c3 from 'c3';
 import { generateBurndownChartData } from '../util/ChartUtil';
@@ -9,8 +8,11 @@ import { generateBurndownChartData } from '../util/ChartUtil';
 class BurndownChartView extends React.Component {
   componentDidMount() {
     this.props.bugs.observe(() => {
-      const yearStart = new Date(`${new Date().getFullYear()}-01-01T00:00:00Z`);
-      const { data, axis } = generateBurndownChartData({ bugs: this.props.bugs, minDate: yearStart });
+      const { bugs, filterOptions } = this.props;
+      const { data, axis } = generateBurndownChartData({ 
+        bugs, 
+        minDate: filterOptions.startDate.get()
+      });
       c3.generate({
         bindto: '#chart',
         data,
@@ -27,7 +29,8 @@ class BurndownChartView extends React.Component {
 }
 
 BurndownChartView.propTypes = {
-  bugs: PropTypes.array.isRequired
+  bugs: PropTypes.array.isRequired,
+  filterOptions: PropTypes.object.isRequired
 }
 
 export default observer(BurndownChartView);

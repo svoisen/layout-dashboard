@@ -4,23 +4,17 @@ import './index.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createBrowserHistory } from 'history';
-import { RouterStore } from 'mobx-react-router';
 import { fetchBugs } from './actions/FetchActions';
 import { Router } from 'react-router';
 import { syncHistoryWithStore } from 'mobx-react-router';
-import { autorun, observable } from 'mobx';
+import { autorun } from 'mobx';
 import { QUANTUM_FLOW, WEBCOMPAT } from './constants/BugListTypes';
 import App from './containers/App';
+import { createStore } from './stores/Store';
 
 const browserHistory = createBrowserHistory();
-const routerStore = new RouterStore();
-
-const store = {
-  bugs: observable([]),
-  router: routerStore
-};
-
-const history = syncHistoryWithStore(browserHistory, routerStore);
+const store = createStore();
+const history = syncHistoryWithStore(browserHistory, store.router);
 
 const initialize = () => {
   ReactDOM.render(
