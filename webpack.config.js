@@ -2,12 +2,20 @@ const path = require('path');
 const webpack = require('webpack');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+const isProduction = process.argv.indexOf('-p') >= 0;
 
 module.exports = {
   devtool: 'source-map',
-  mode: 'development',
+  mode: isProduction ? 'production' : 'development',
   entry: {
-    bundle: './src/index'
+    bundle: './src/index',
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all'
+    }
   },
   output: {
     path: path.join(__dirname, 'dist'),
@@ -17,8 +25,13 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      template: './src/index.html'
-    })
+      template: './src/index.html',
+      options: {
+        chunksSortMode: 'manual',
+        chunks: ['vendor', 'bundle']
+      }
+    }),
+    new BundleAnalyzerPlugin()
   ],
   resolve: {
     extensions: ['.js', '.jsx']

@@ -8,6 +8,7 @@ const createStore = () => {
       startDate: observable.box(startOfThisYear())
     },
     bugs: observable([]),
+    filteredBugs: observable([]),
     router: new RouterStore()
   };
 };

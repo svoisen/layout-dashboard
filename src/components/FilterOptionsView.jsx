@@ -8,7 +8,7 @@ const FilterOptionsView = ({ filterOptions, onStartDateChange }) => {
     <div className="filterOptionsView">
       <div className="filterOptionsFieldGroup">
         <label htmlFor="startDate">Start Date</label>
-        <input type="date" name="startDate" required value={ formatDateForInput(filterOptions.startDate.get()) } onChange={ e => onStartDateChange(e.target.value) } />
+        <input type="date" name="startDate" value={ formatDateForInput(filterOptions.startDate.get()) } onChange={ e => onStartDateChange(e.target.value) } />
       </div>
     </div>
   );

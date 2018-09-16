@@ -1,3 +1,5 @@
+import { startOfThisYear } from "./DateUtil";
+
 const generateBurndownChartData = ({ bugs, minDate }) => {
   let events = [];
   bugs.forEach(bug => {
@@ -23,8 +25,10 @@ const generateBurndownChartData = ({ bugs, minDate }) => {
       } 
 
       return { numOpen: --openCount, ...event };
-    })
-    .filter(event => event.date >= minDate);
+    });
+
+  const maxEventDate = events.length > 0 ? events[events.length - 1].date : startOfThisYear();
+  events = events.filter(event => event.date >= Math.min(minDate, maxEventDate));
 
   return {
     data: {

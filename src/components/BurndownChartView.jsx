@@ -4,10 +4,11 @@ import PropTypes from 'prop-types';
 import { observer } from 'mobx-react';
 import c3 from 'c3';
 import { generateBurndownChartData } from '../util/ChartUtil';
+import { autorun } from 'mobx';
 
 class BurndownChartView extends React.Component {
   componentDidMount() {
-    this.props.bugs.observe(() => {
+    this.autorunDisposer = autorun(() => {
       const { bugs, filterOptions } = this.props;
       const { data, axis } = generateBurndownChartData({ 
         bugs, 
@@ -19,6 +20,12 @@ class BurndownChartView extends React.Component {
         axis
       });
     }, true);
+  }
+
+  componentWillUnmount() {
+    if (this.autorunDisposer) {
+      this.autorunDisposer();
+    }
   }
 
   render() {

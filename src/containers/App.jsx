@@ -5,9 +5,11 @@ import BugList from '../components/BugList';
 import { observer } from 'mobx-react';
 import BurndownChartView from '../components/BurndownChartView';
 import FilterOptionsView from '../components/FilterOptionsView';
-import { setStartDateFromStr } from '../actions/FilterActions';
+import { createFilterActions } from '../actions/FilterActions';
+
 
 const App = observer(({ store }) => {
+  const { setStartDateFromStr } = createFilterActions(store);
   const { bugs, filterOptions, router } = store;
 
   return (
@@ -16,7 +18,7 @@ const App = observer(({ store }) => {
       <div className="contents">
         <FilterOptionsView
           filterOptions={ filterOptions }
-          onStartDateChange={ dateStr => setStartDateFromStr({ filterOptions, dateStr }) } />
+          onStartDateChange={ dateStr => setStartDateFromStr(dateStr) } />
         <BurndownChartView
           bugs={ bugs }
           filterOptions={ filterOptions } />

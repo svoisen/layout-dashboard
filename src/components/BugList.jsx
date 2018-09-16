@@ -2,10 +2,14 @@ import './BugList.css';
 import React from 'react';
 import { observer } from 'mobx-react';
 
+const bugzillaLink = bugId => {
+  return `https://bugzilla.mozilla.org/show_bug.cgi?id=${bugId}`;
+}
+
 const renderBug = bug => {
   return (
-    <tr key={ bug.id } className={ bug.is_open ? "openBug" : "closedBug" }>
-      <td className="bugId"><a href={ `https://bugzilla.mozilla.org/show_bug.cgi?id=${bug.id}` }>{ bug.id }</a></td>
+    <tr key={ bug.id } className={ bug.is_open ? "openBug" : "closedBug" } onClick={ () => window.location.href = bugzillaLink(bug.id) }>
+      <td className="bugId"><a href={ bugzillaLink(bug.id) }>{ bug.id }</a></td>
       <td className="bugComponent">{ bug.component }</td>
       <td className="bugSummary">{ bug.summary }</td>
       <td className="bugDate">{ bug.creation_time }</td>

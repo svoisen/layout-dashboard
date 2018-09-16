@@ -1,6 +1,7 @@
 .buglist {
   overflow-x: hidden;
   overflow-y: auto;
+  height: 40vh;
 }
 
 .buglist a, .buglist a:visited {
@@ -30,6 +31,11 @@
 
 .buglist tbody tr:nth-child(even) {
   background-color: #f0f0f0;
+}
+
+.buglist tbody tr:hover {
+  background-color: lightgoldenrodyellow;
+  cursor: pointer;
 }
 
 .buglist tbody td {
